@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KeyCollition : MonoBehaviour
 {   
+	//public GameObject UIHandler;
 	
 	// Start is called before the first frame update
 	void Start()
@@ -26,6 +27,7 @@ public class KeyCollition : MonoBehaviour
 			Debug.Log("Collision with key");
 			AudioSource.PlayClipAtPoint (keySound, transform.position); //Reproduce el sonido
 			Destroy(other.gameObject); //Elimina el objeto
+			//this.UIHandler.GetComponent<FirstScript>(); //Aumenta el contador de llaves
 		}
 	}
 
