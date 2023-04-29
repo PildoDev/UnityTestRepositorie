@@ -31,6 +31,7 @@ public class UIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*Funcion para el tiempo*/
         if(backwards ==true){
             time -= Time.deltaTime;
             if(time < 0) time=0;
@@ -44,6 +45,7 @@ public class UIHandler : MonoBehaviour
         //cents =(int)((time- (int)time) *100f);
         
         timerTXT.text = "Tiempo: "+string.Format("{0:00}:{1:00}",minutes, seconds);
+        /* /--Funcion para el tiempo--/ */
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -56,5 +58,10 @@ public class UIHandler : MonoBehaviour
             llaves++;
             llavesTXT.text="Llaves : " + llaves + "/" + llavesTotales;
         }
+    }
+
+    public void KeyCollected(){
+        llaves++;
+        llavesTXT.text="Llaves : " + llaves + "/" + llavesTotales;
     }
 }

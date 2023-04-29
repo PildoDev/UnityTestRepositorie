@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - key
+  - pistol3
   layers:
   - Default
   - TransparentFX

@@ -19,13 +19,23 @@ public class KeyCollition : MonoBehaviour
 	}
 	
 	/*CODIGO PARA REPRODUCIR SONIDO PERO DESDE EXTERNO*/
-	public AudioClip keySound; //Hay que agregar el sonido en el script del jugador
+	//Hay que agregar los sonidos en el script del jugador
+	public AudioClip keySound; 
+	public AudioClip gunSound;
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "key")
 		{
 			Debug.Log("Collision with key");
 			AudioSource.PlayClipAtPoint (keySound, transform.position); //Reproduce el sonido
+			Destroy(other.gameObject); //Elimina el objeto
+			//this.UIHandler.GetComponent<FirstScript>(); //Aumenta el contador de llaves
+		}
+
+		if (other.tag == "pistol3")
+		{
+			Debug.Log("Collision with pistol3");
+			AudioSource.PlayClipAtPoint (gunSound, transform.position); //Reproduce el sonido
 			Destroy(other.gameObject); //Elimina el objeto
 			//this.UIHandler.GetComponent<FirstScript>(); //Aumenta el contador de llaves
 		}

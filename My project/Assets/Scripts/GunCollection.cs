@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GunCollection : MonoBehaviour
-{
-    public GameObject manosNormales;
-    public GameObject manosCruz;
+{   
+    public GameObject leftHandNormal;
+    public GameObject leftHandCruz;
+    public GameObject rightHandNormal;
+    public GameObject rightHandPistola;
+    [SerializeField] UIHandler uiHandler;
     // Start is called before the first frame update
     void Start()
     {
-        manosNormales.SetActive(true);
-        manosCruz.SetActive(false);
+        leftHandNormal.SetActive(true);
+        leftHandCruz.SetActive(false);
+        rightHandNormal.SetActive(true);
+        rightHandPistola.SetActive(false);
     }
 
     // Update is called once per frame
@@ -23,8 +28,15 @@ public class GunCollection : MonoBehaviour
 	{
 		if (other.tag == "key")
 		{
-			manosNormales.SetActive(false);
-            manosCruz.SetActive(true);
+			leftHandNormal.SetActive(false);
+            leftHandCruz.SetActive(true);
+            uiHandler.KeyCollected();
+		}
+
+        if (other.tag == "pistol3")
+		{
+            rightHandNormal.SetActive(false);
+            rightHandPistola.SetActive(true);
 		}
 	}
 }
