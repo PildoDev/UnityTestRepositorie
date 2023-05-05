@@ -16,6 +16,8 @@ public class UIHandler : MonoBehaviour
     private int llaves = 0;
     private int llavesTotales = 0;
     public bool backwards;
+    public GameObject gameOver;
+    [SerializeField] MenuScript menuScript;
     [Tooltip("if it's backwards set the timer here")] public float time;
     private int minutes, seconds, cents;
 
@@ -26,6 +28,7 @@ public class UIHandler : MonoBehaviour
         this.llavesTotales = GameObject.FindGameObjectsWithTag("key").Length;
         this.vida.GetComponent<Scrollbar>().size = bVida;
         llavesTXT.text="Llaves : " + llaves + "/" + llavesTotales;
+        gameOver.SetActive(false);
     }
 
     // Update is called once per frame
@@ -46,6 +49,15 @@ public class UIHandler : MonoBehaviour
         
         timerTXT.text = "Tiempo: "+string.Format("{0:00}:{1:00}",minutes, seconds);
         /* /--Funcion para el tiempo--/ */
+
+        this.bVida -= 0.00005f;
+        this.vida.GetComponent<Scrollbar>().size = bVida;
+        if(bVida <= 0){
+            this.gameOver.SetActive(true);
+            //yield return new WaitForSeconds(5);
+            menuScript.Menu();
+        }
+
     }
 
     private void OnTriggerEnter(Collider other) {

@@ -18,6 +18,10 @@ public class MenuScript : MonoBehaviour
         
     }
 
+    public void Menu(){
+        SceneManager.LoadScene(0);
+    }
+
     public void Jugar(){
         SceneManager.LoadScene(1);
     }
